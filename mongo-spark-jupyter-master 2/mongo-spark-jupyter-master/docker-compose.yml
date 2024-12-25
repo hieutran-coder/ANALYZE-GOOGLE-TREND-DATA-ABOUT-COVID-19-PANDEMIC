@@ -1,0 +1,103 @@
+version: "3"
+volumes:
+  shared-workspace:
+    name: "hadoop-distributed-file-system"
+    driver: local
+
+services:
+  jupyterlab:
+    image: jupyter/pyspark-notebook
+    container_name: jupyterlab
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - 8888:8888
+    volumes:
+      - shared-workspace:/opt/workspace
+    networks:
+      - localnet
+
+  spark-master:
+    image: bde2020/spark-master
+    container_name: spark-master
+    ports:
+      - 8080:8080
+      - 7077:7077
+    volumes:
+      - shared-workspace:/opt/workspace
+    networks:
+      - localnet
+
+  spark-worker-1:
+    image: bde2020/spark-worker
+    container_name: spark-worker-1
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=1g
+    ports:
+      - 8081:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+  spark-worker-2:
+    image: bde2020/spark-worker
+    container_name: spark-worker-2
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=1g
+    ports:
+      - 8082:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+    networks:
+      - localnet
+  
+  namenode:
+    image: bde2020/hadoop-namenode
+    container_name: namenode
+    restart: always
+    networks:
+      - localnet
+    ports:
+      - 9870:9870
+    volumes:
+      - shared-workspace:/opt/workspace
+    environment:
+      - CLUSTER_NAME=5_nodes_hadoop_cluster
+    env_file:
+      - ./hadoop.env
+
+
+  datanode_01:
+    image: bde2020/hadoop-datanode
+    container_name: datanode_01
+    restart: always
+    networks:
+      - localnet
+    volumes:
+      - shared-workspace:/opt/workspace
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+
+  datanode_02:
+    image: bde2020/hadoop-datanode
+    container_name: datanode_02
+    restart: always
+    networks:
+      - localnet
+    volumes:
+      - shared-workspace:/opt/workspace
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+  
+
+networks:
+    localnet:
+        attachable: true

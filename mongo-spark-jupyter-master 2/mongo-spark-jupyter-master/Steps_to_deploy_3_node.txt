@@ -1,0 +1,10 @@
+1. Install docker desktop (Windows)
+2. docker-compose up -d (2 minutes for start succesfully)
+3. docker cp ..file.. namenode:/
+4. docker exec -it namenode /bin/bash
+5. hdfs dfs -mkdir -p /user/root/input
+6. hdfs dfs put .file.. /user/root/input
+7. Can run file WordCount.txt to text
+// Tham khao trên internet de lay file compose va tinh chinh 4 node--->3 node
+// chua tao đuoc 2 ban sao
+ 

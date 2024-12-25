@@ -1,0 +1,14 @@
+Hello, what your name?
+I am going to implement Hadoop Cluster?
+So do you want to see my doing?.
+Hehe
+
+n the Two-Dimensional Bin Packing Problem (2BP), we are further given an unlimited number of identical rectangular bins of width W and height H, and the objective is to allocate all the items to the minimum number of bins;
+
+(ii) in the Two-Dimensional Strip Packing Problem (2SP), we are further given a bin of width W and inﬁnite height (hereafter called strip), and the objective is to allocate all the items to the strip by minimizing the height to which the strip is used.
+
+In both cases, the items have to be packed with their w-edges parallel to the W-edge of the bins (or strip). We will assume, with no loss of generality, that all input data are positive integers, and that w j 6 W and h j 6 H (j ¼ 1; . . . ; n).
+
+Both problems are strongly NP-hard, as is easily seen by transformation from the strongly NP-hard (one-dimensional) Bin Packing Problem (1BP), in which n items, each having an associated size h j , have to be partitioned into the minimum number of subsets so that the sum of the sizes in each subset does not exceed a given capacity H.
+
+A third relevant case of rectangle packing is the following. Each item j has an associated proﬁt p j > 0, and the problem is to select a subset of items, to be packed in a single ﬁnite bin, which maximizes the total selected proﬁt. This problem is usually denoted as (Two-Dimensional) Cutting
