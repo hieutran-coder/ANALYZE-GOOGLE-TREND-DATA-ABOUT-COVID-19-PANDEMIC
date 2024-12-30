@@ -1,3 +1,10 @@
+
+# Introduction
+
+# Workflow
+![image](https://github.com/user-attachments/assets/41a86124-154c-4c63-9ce5-78d37db47975)
+
+# References
 Link checkpoint:  [.ipynb_checkpoints](https://drive.google.com/drive/folders/1Ak-lcWIrj0KK3gRe-l1lJmktj6Q6Xxqy?fbclid=IwY2xjawHYWERleHRuA2FlbQIxMAABHecCuZU6eAVx1EvAYwqNXD-axvTTsw74kMJ4gq8Sp5xzlbrCNi48r2Tx6g_aem_b3HoSZ4u-i85YYPoaKfoWQ)
 
 MongoDB: https://github.com/Mhieu14/covid_trend_data_collector
